@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker - Pencatat Pengeluaran</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>💰 Expense Tracker</h1>
+    </header>
+
+    <main class="container">
+        
+        <section id="input-section" class="card main-focus-card">
+            <h2>Tambahkan Pengeluaran Baru</h2>
+            <form id="expense-form">
+                <div class="input-group">
+                    <label for="amount">Nominal (Rp)</label>
+                    <input type="number" id="amount" placeholder="contoh: 50000" min="1" required>
+                </div>
+                <div class="input-group">
+                    <label for="subject">Subjek</label>
+                    <input type="text" id="subject" placeholder="contoh: Makan Siang, Transportasi" required>
+                </div>
+                <button type="submit" id="record-btn">Catat Pengeluaran</button>
+            </form>
+        </section>
+
+        <div class="secondary-features-group">
+            <section id="summary-section" class="card small-card">
+                <h2>Ringkasan</h2>
+                <div class="summary-grid">
+                    <div>Hari Ini: <span id="total-today">Rp 0</span></div>
+                    <div>Bulan Ini: <span id="total-month">Rp 0</span></div>
+                    <div>Total Keseluruhan: <span id="grand-total">Rp 0</span></div>
+                </div>
+            </section>
+
+            <section id="settings-section" class="card small-card">
+                <h2>Pengaturan 🎨</h2>
+                <div id="theme-controls">
+                    <label for="primaryColor">Warna Utama:</label>
+                    <input type="color" id="primaryColor" value="#007bff">
+                    <label for="secondaryColor">Warna Sekunder:</label>
+                    <input type="color" id="secondaryColor" value="#f8f9fa">
+                </div>
+                <button id="export-btn" class="export-button">Export Data (CSV)</button>
+            </section>
+        </div>
+        
+        <section id="chart-section" class="card full-width">
+            <h2>📊 Analisis Pengeluaran</h2>
+            <div class="chart-options">
+                <label for="chart-filter">Lihat Berdasarkan:</label>
+                <select id="chart-filter">
+                    <option value="day">Hari</option>
+                    <option value="hour">Jam</option>
+                    <option value="month">Bulan</option>
+                </select>
+            </div>
+            
+            <div class="chart-container-grid">
+                <div class="chart-wrapper">
+                    <h3>Tren Pengeluaran (Line Chart)</h3>
+                    <canvas id="lineChart"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <h3>Distribusi Subjek (Donut Chart)</h3>
+                    <canvas id="donutChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <section id="detail-section" class="card full-width">
+            <h2>🧾 Detail Pengeluaran</h2>
+            <div class="controls">
+                <input type="text" id="search-input" placeholder="Cari Subjek atau Nominal...">
+            </div>
+            <table id="expense-table">
+                <thead>
+                    <tr>
+                        <th data-sort="date">Tanggal/Waktu</th>
+                        <th data-sort="subject">Subjek</th>
+                        <th data-sort="amount">Nominal</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </section>
+        
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
